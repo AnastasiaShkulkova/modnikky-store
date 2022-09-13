@@ -1,0 +1,136 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Roboto;
+  position: relative;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  max-width: calc(100% - 250px);
+  margin: 0 auto;
+}
+
+.section-title {
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.section-title__span {
+  font-weight: 700;
+}
+
+.search-list {
+  display: flex;
+  padding: 50px 0;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.card-price {
+  font-family: Roboto;
+  font-size: 24px;
+  padding-top: 24px;
+  font-weight: 700;
+}
+
+h3 {
+  font-family: Roboto;
+  font-size: 32px;
+  padding-top: 80px;
+}
+
+h4 {
+   font-family: Roboto;
+  font-size: 32px;
+  padding-top: 120px;
+  text-align: center;
+}
+
+.slick-arrow {
+  position: absolute;
+  z-index: 10;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 10px;
+  border: 0;
+
+}
+
+.slick-prev {
+  left: 0;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
+.slick-next {
+  right: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+
+}
+
+.slider-container {
+  position: relative;
+}
+.slick-slide {
+  max-width: 400px;
+}
+.slick-track {
+  gap: 15px;
+}
+.card-image-container {
+  max-height: 600px;
+}
+
+.padding {
+  padding-top: 200px;
+}
+
+
+@media(max-width: 850px) {
+  .container {
+    max-width: calc(100% - 80px);
+  }
+
+  .slick-slide {
+    min-width: 360px;
+  }
+
+  .product-review-content {
+    max-width: 100% !important;
+  }
+
+  .group-images-container {
+    flex-direction: column;
+  }
+
+  .group-images-item {
+    width: 100%;
+  }
+
+  .footer-section {
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+  }
+}
+@media(max-width: 650px) {
+  .container {
+    max-width: 100%;
+  }
+}
