@@ -4,7 +4,7 @@ import { FormButton, FormInput, FormWrapper } from './stylesForm';
 export function FormSignIn({title, handleClick}) {
 
     const [email, setEmail] = useState('')
-    const [pass, setPass] = useState("");
+    const [password, setPassword] = useState("");
   return (
     <FormWrapper>
       <FormInput
@@ -15,11 +15,11 @@ export function FormSignIn({title, handleClick}) {
       />
       <FormInput
         type="password"
-        value={pass}
-        onChange={(e) => setPass(e.target.value)}
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
         placeholder="password"
       />
-      <FormButton onClick={() => handleClick(email, pass)}>
+      <FormButton onClick={() => handleClick(email, password)}>
         {title}
       </FormButton>
     </FormWrapper>

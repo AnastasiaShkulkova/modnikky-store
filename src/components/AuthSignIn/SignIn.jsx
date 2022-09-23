@@ -1,9 +1,9 @@
 import React from "react";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { useDispatch } from "react-redux";
+import "firebase/auth";
 import { FormSignIn } from "./FormSignIn";
 import { useNavigate } from "react-router-dom";
-import { setUser } from "../../store/slice/userSlice";
+import { auth } from "../../Firebase";
+import { useEffect } from "react";
 import {
   AuthContainer,
   AuthHeadingButton,
@@ -15,29 +15,27 @@ import {
 } from "./stylesAuth";
 
 export function SignIn() {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogin = (email, password) => {
-    const auth = getAuth();
-    signInWithEmailAndPassword(auth, email, password)
-      .then(({ user }) => {
-        console.log(user);
-        dispatch(
-          setUser({
-            email: user.email,
-            id: user.uid,
-            token: user.accessToken,
-          })
-        );
-      })
-      .catch(console.error);
+
+    try {
+         auth.signInWithEmailAndPassword(email, password);
     navigate("/");
+
+    } catch (e) {
+      console.dir(e);
+    }
   };
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => console.log(user));
+  }, [])
+
 
   const handleExit = () => {
     navigate("/");
-  }
+  };
 
   return (
     <AuthContainer>

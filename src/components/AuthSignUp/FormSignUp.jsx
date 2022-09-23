@@ -13,24 +13,12 @@ import {
 } from "../AuthSignIn/stylesForm";
 
 export function FormSignUp({ title, handleClick }) {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+
+
   const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
+  const [password, setPassword] = useState("");
   return (
     <FormWrapper>
-      <FormInput
-        type="email"
-        value={firstName}
-        onChange={(e) => setFirstName(e.target.value)}
-        placeholder="First Name"
-      />
-      <FormInput
-        type="email"
-        value={lastName}
-        onChange={(e) => setLastName(e.target.value)}
-        placeholder="Last Name"
-      />
       <FormInput
         type="email"
         value={email}
@@ -39,8 +27,8 @@ export function FormSignUp({ title, handleClick }) {
       />
       <FormInput
         type="password"
-        value={pass}
-        onChange={(e) => setPass(e.target.value)}
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
         placeholder="Password"
       />
       <AuthPoliciesContainer>
@@ -62,7 +50,7 @@ export function FormSignUp({ title, handleClick }) {
           </PrivacyPolicyLink>
         </AuthPoliciesAgreement>
       </AuthPoliciesContainer>
-      <FormButton onClick={() => handleClick(email, pass)}>{title}</FormButton>
+      <FormButton onClick={() => handleClick(email, password)}>{title}</FormButton>
     </FormWrapper>
   );
 }

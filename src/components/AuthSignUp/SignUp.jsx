@@ -1,8 +1,7 @@
 import { FormSignUp } from "./FormSignUp";
-import { useNavigate } from 'react-router-dom'
-import setUser from '../../store/slice/userSlice'
-import { useDispatch } from "react-redux";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { auth } from "../../Firebase";
+import "firebase/auth";
 import {
   AuthContainer,
   AuthHeadingButton,
@@ -11,35 +10,28 @@ import {
   AuthLinkWrap,
   AuthWrap,
   Heading,
-
 } from "../AuthSignIn/stylesAuth";
-
 
 import React from "react";
 
 export function SignUp() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleRegister = (email, password) => {
-    const auth = getAuth();
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(({user}) => {
-        console.log(user);
-        dispatch(setUser({
-            email: user.email,
-            id: user.uid,
-            token: user.accessToken,
-        }));
-      })
-      .catch(console.error);
-        navigate("/");
+
+    try {
+      auth.createUserWithEmailAndPassword(email, password);
+    navigate("/");
+
+    } catch (e) {
+      console.dir(e);
+    }
 
   };
 
-    const handleExit = () => {
-      navigate("/");
-    };
+  const handleExit = () => {
+    navigate("/");
+  };
 
   return (
     <AuthContainer>
